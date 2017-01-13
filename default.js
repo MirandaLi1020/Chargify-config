@@ -475,10 +475,16 @@ function initForm() {
     $("label[for='subscription_payment_profile_attributes_billing_zip']").text("Billing Post Code *");
     $("label[for='subscription_customer_attributes_address']").text("Start entering your address *");
     $(".form__section--additional-information").hide();
+    $(".form__header-section--title > label").text(function () {
+      return $(this).text().replace("Postage", "Device postage");
+    });
 }
 
 $(document).bind("afterSummaryRefresh", function () {
-    hideRecurringLineItem();
+  hideRecurringLineItem();
+  $(".plan__summary-table-row-label").html(function () {
+    return $(this).html().replace("Postage:", "Device postage:");
+  });
 });
 
 $(document).ready(function () {
